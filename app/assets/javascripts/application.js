@@ -31,13 +31,13 @@ $( document ).ready(function() {
     })
   ;
 
-  var delay=250;
-  setTimeout(function(){
+  // var delay=250;
+  // setTimeout(function(){
     $('.sub-header')
     .transition({
       animation: 'scale',
       duration: 800});
-  }, delay);
+  // }, delay);
 
   var delay=500;
   setTimeout(function(){
