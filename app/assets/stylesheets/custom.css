@@ -2,7 +2,6 @@ body {
   margin-top: 40px;
 }
 
-
 .transparent {
   background-color: rgba(255, 255, 255, 0.1) !important
 }
@@ -18,14 +17,24 @@ body {
   height: 550px;
 }
 
+.centered {
+  text-align:center;
+  margin:0 auto;
+}
+
+/*start------------Font--------------start*/
+
 .header-text {
   padding-top: 80px;
   text-align: center;
 }
 
-.centered {
-  text-align:center;
-  margin:0 auto;
+.jumbo-font {
+  font-size: 50px;
+}
+
+.sub-header {
+  font-size: 24px;
 }
 
 .os300 {
@@ -56,4 +65,29 @@ body {
 
 .white {
   color: white;
+}
+
+.outline {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/*end------------Font--------------end*/
+
+
+.push-down {
+  padding-top: 100px;
+}
+
+.nudge-down {
+  margin-top: 25px !important;
+}
+
+.resort-logo {
+  height: 185px !important;
+  display: block;
+}
+
+.resorts {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
