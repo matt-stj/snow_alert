@@ -4,6 +4,23 @@
       <i class="circular inverted cloud green icon"></i>
       SnowAlert
     </a>
-    <a href='/login' class="item right floated">Sign Up</a>
+    <% if current_user %>
+      <div class="ui inverted right floated item dropdown">
+        <span><%= current_user.name %></span>
+        <img class="ui avatar image tap-right" src="<%= current_user.image_url %>">
+        <i class="dropdown icon"></i>
+        <div class="ui inverted menu">
+
+              <%= link_to "Dashboard", user_path(current_user), class: "link item" %>
+
+              <%= link_to "Account Preferences", edit_user_path(current_user), class: "link item" %>
+
+              <%= link_to "Log out", logout_path, method: :delete, class: "link item" %>
+
+        </div>
+      </div>
+    <% else %>
+      <%= link_to "Login", create_account_path, class: "item right floated" %>
+    <% end %>
   </div>
 </div>

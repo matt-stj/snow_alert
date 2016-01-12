@@ -1,6 +1,14 @@
+
 body {
-  margin-top: 40px;
-}
+    margin-top: 60px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
 
 .transparent {
   background-color: rgba(255, 255, 255, 0.1) !important
@@ -73,6 +81,17 @@ body {
 
 /*end------------Font--------------end*/
 
+.ui.menu .ui.dropdown.item .menu {
+  background-color: rgba(93, 93, 93, 0.94) !important;
+}
+
+.ui.menu .ui.dropdown.item .menu .link {
+  color: white !important;
+}
+
+.tap-right {
+  margin-left: 10px;
+}
 
 .push-down {
   padding-top: 100px;
