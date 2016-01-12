@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: snow-alert_production
-  username: snow_alert
-  password: <%= ENV['SNOW_ALERT_DATABASE_PASSWORD'] %>
