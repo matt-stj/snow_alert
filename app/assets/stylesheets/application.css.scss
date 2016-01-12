@@ -15,6 +15,34 @@
  */
 
  @import "semantic-ui";
- 
- // Google Fonts
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+
+// Fonts
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600);
+
+$font-stack:    Open Sans, sans-serif;
+$primary-color: #5BBD72;
+$secondary-color: #414141;
+
+body {
+    font: 100% $font-stack;
+    color: $secondary-color;
+    margin-top: 60px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+// Colors
+$blue             : #3B83C0;
+$green            : #5BBD72;
+$orange           : #E07B53;
+$pink             : #D9499A;
+$purple           : #564F8A;
+$red              : #D95C5C;
+$teal             : #00B5AD;
+$yellow           : #F2C61F;
+// -----
+$black            : #414141;
+$grey             : #CCCCCC;
+$white            : #FFFFFF;
