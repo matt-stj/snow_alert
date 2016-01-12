@@ -15,10 +15,12 @@ gem 'autoprefixer-rails'
 gem 'therubyracer'
 gem 'sprockets-rails', '~> 2.3'
 gem 'omniauth-facebook'
+gem 'figaro'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry'
 end
 
 group :development do

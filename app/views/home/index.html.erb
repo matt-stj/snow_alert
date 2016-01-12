@@ -3,8 +3,11 @@
     <h1 class="ui inverted center aligned white jumbo-font outline">
       Never Miss Another Powder Day
     </h1>
-    <h3 class="ui center aligned os300i white outline sub-header">Free snowfall alerts for your favorite mountains.</h3>
-      <%= link_to "Get Started", login_path, class: "ui button huge centered primary nudge-down home-btn" %>
+    <h3 class="ui center aligned os300i white outline sub-header">Free snow alerts for your favorite mountains.</h3>
+      <!-- <%= link_to "Get Started", login_path, class: "ui button huge centered primary nudge-down home-btn" %> -->
+      <%= link_to login_path, class: "ui facebook huge button nudge-down home-btn" do %>
+        <i class="facebook icon"></i> Login with Facebook
+      <% end %>
   </div>
 </div>
 
