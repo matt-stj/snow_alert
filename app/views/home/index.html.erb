@@ -1,8 +1,57 @@
-<div class="ui top fixed menu">
-  <div class="item">
-    <img src="/images/logo.png">
+<div class="background">
+  <div class="header-text">
+    <h1 class="ui inverted center aligned white jumbo-font outline">
+      Never Miss Another Powder Day
+    </h1>
+    <h3 class="ui center aligned os300i white outline sub-header">Free snow alerts for your favorite mountains.</h3>
+      <%= link_to "Get Started", create_account_path, class: "ui button huge centered primary nudge-down home-btn" %>
+      <%= link_to login_path, class: "ui facebook huge button nudge-down home-btn" do %>
+        <i class="facebook icon"></i> Login with Facebook
+      <% end %>
   </div>
-  <a class="item">Features</a>
-  <a class="item">Testimonials</a>
-  <a class="item">Sign-in</a>
 </div>
+
+<div class="ui container resorts">
+<h3 class="ui horizontal divider header">
+    Featured Areas
+</h3>
+  </div>
+</div>
+
+<div class="feature alternate ui stripe vertical segment">
+  <div class="ui three column center aligned divided relaxed stackable grid container">
+    <div class="row">
+      <div class="column">
+        <h2 class="ui icon header">
+          <%= image_tag("vail-logo.png", class: "ui resort-logo icon")  %>
+          Vail Resorts
+        </h2>
+        <a class="ui large button" href="/usage/theming.html">View Forecasts</a>
+      </div>
+      <div class="column">
+        <h2 class="ui icon header">
+          <%= image_tag("wp-logo.png", class: "ui resort-logo icon")  %>
+          Rocky Mountain Superpass
+        </h2>
+        <div class="ui primary view-ui large button">View Forecasts</div>
+      </div>
+      <div class="column">
+        <h2 class="ui icon header">
+          <%= image_tag("northstar-logo.png", class: "ui resort-logo icon")  %>
+          Lake Tahoe
+        </h2><br>
+        <a href="https://github.com/Semantic-Org/Semantic-UI/issues" class="ui large button">View Forecasts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="ui text container center aligned header pull-up transparent bring-forward">
+      <h1 class="ui inverted center aligned header">
+        Imagine-a-Company
+      </h1>
+      <h2>Do whatever you want when you want to.</h2>
+      <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+</div> -->
