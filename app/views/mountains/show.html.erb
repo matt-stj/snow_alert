@@ -1,7 +1,20 @@
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
 <div class="ui one column stackable center aligned page grid">
    <div class="column twelve wide">
 
       <h1> <%= @mountain.name %> Forecast</h1>
+        <% if current_user.favorited?(@mountain.id) %>
+          <i class="check circle icon"></i>
+        <% else %>
+          <i class="remove circle icon"></i>
+        <% end %>
         <br>
 
       <div class="ui statistics">

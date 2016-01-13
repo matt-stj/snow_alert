@@ -11,4 +11,27 @@ class User < ActiveRecord::Base
     end
   end
 
+  def favorited?(mountain_id)
+    self.favorites.exists?(mountain_id: mountain_id)
+  end
+
+  def add_favorite(mountain_id)
+    self.favorites.create(mountain_id: mountain_id)
+  end
+
+  def remove_favorite(mountain_id)
+    self.favorites.find_by(mountain_id: mountain_id).delete
+  end
+
+  def update(params)
+    if params['user']
+      update_attributes(email: params['user']['email'],
+                                 snow_preference: params['user']['snow_preference'])
+    elsif params['favorite_action'].keys.first == 'remove'
+      remove_favorite(params['favorite_action'].fetch('remove'))
+    else
+      add_favorite(params['favorite_action'].fetch('add'))
+    end
+  end
+
 end
