@@ -5,6 +5,23 @@
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
   </head>
   <body>
-    <h1>Get Stoked - Snow is on the Way!</h1>
+    <h1> <%= @user.name %> Get Stoked - Snow is on the Way!</h1>
+
+    <% @forecast.each do |mountain| %>
+      <%= mountain.keys.first %>:
+    <table border="1" style="wide: 100%">
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+      </tr>
+      <% mountain.values.flatten(1).each do |pair| %>
+      <tr>
+        <td> <%= pair.first.strftime("%a, %b %e") %> </td>
+        <td> <%= pair.last %> </td>
+      </tr>
+      <% end %>
+    </table>
+    <br>
+    <% end %>
   </body>
 </html>
