@@ -8,6 +8,7 @@ delete '/logout', to: 'sessions#destroy'
 
 get '/auth/facebook/callback' => 'sessions#create'
 get '/auth/facebook', as: 'login'
+get '/auth/failure', to: 'home#index'
 
 resources :users, only: [:show, :edit, :update]
 resources :mountains, only: [:index, :show]

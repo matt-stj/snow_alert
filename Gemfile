@@ -30,10 +30,9 @@ group :development do
   gem 'spring'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
 group :test do
   gem 'webmock'
+  gem 'simplecov', :require => false
+  gem 'capybara'
+  gem 'launchy'
 end
