@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :favorites
+  has_many :resorts, through: :favorites
 
   def self.from_omniauth(auth_info)
     where(uid: auth_info[:uid]).first_or_create do |new_user|
