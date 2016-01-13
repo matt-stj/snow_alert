@@ -9,9 +9,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     @user = current_user
-    if @user.update_attributes(params["user"])
+    if @user.update_attributes(email: params['user']['email'],
+                               snow_preference: params['user']['snow_preference'])
       flash["notice"] = "Your preferences have been updated!"
     else
       flash["alert"] = "There was an error, please try again."
