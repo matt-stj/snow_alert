@@ -11,9 +11,13 @@
 
       <h1> <%= @mountain.name %> Forecast</h1>
         <% if current_user.favorited?(@mountain.id) %>
-          <i class="check circle icon"></i>
-        <% else %>
-          <i class="remove circle icon"></i>
+           <%= link_to user_path(current_user, :favorite_action => { :remove => @mountain.id }), method: :patch do %>
+          <i class="remove circle icon large red"></i><span class="remove">Remove from Favorites</span>
+          <% end %>
+          <% else %>
+          <%= link_to user_path(current_user, :favorite_action => { :add => @mountain.id }), method: :patch do %>
+         <i class="add circle icon large green"></i><span class="add">Add to Favorites</span>
+         <% end %>
         <% end %>
         <br>
 
