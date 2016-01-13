@@ -1,9 +1,45 @@
-<div class="ui input">
-  <%= form_for(@user) do |f| %>
-    <%= f.label :snow_preference %>
-    <%= f.text_field :snow_preference %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.submit "Save Changes", class: "btn" %>
-  <% end %>
+
+
+
+
+
+<div class="ui two column centered grid">
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+      <h2 class="ui green image header login-text">
+        <div class="content push-down">
+          <i class="tree icon"></i>
+          Just a couple questions and you're set!
+        </div>
+      </h2>
+      <%= form_for @user, :html => {class: 'ui large form login-form'} do |f| %>
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui input">
+              <%= f.label :snow_preference, "Email Address", class: "input" %>
+            </div>
+          <div class="field">
+            <div class="ui input">
+              <%= f.text_field :email, class: "input" %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui input">
+              <%= f.label :snow_preference, "How much snowfall should we alert you for? (inches)", class: "input" %>
+            </div>
+            <div class="field">
+              <div class="ui input">
+                <%= f.text_field :snow_preference, class: "input" %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <%= f.submit "Save Changes", class: "ui fluid large primary submit button" %>
+          <% end %>
+        </div>
+
+
+    </div>
+  </div>
+
 </div>

@@ -4,12 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-     if user = User.from_omniauth(request.env["omniauth.auth"])
-       session[:user_id] = user.id
-       redirect_to edit_user_path(current_user)
-     else
-       flash[:notice] = "There was an error, please try again."
-       redirect_to root_path
+       if user = User.find_by_uid(request.env["omniauth.auth"].uid)
+         session[:user_id] = user.id
+         redirect_to user_path(current_user)
+       elsif user = User.from_omniauth(request.env["omniauth.auth"])
+         session[:user_id] = user.id
+         redirect_to edit_user_path(current_user)
+       else
+         flash[:notice] = "There was an error, please try again."
+         redirect_to
      end
   end
 
