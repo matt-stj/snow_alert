@@ -5,6 +5,21 @@ class Weather
     @data = ForecastIOService.new.forecast(latitude, longitude)
   end
 
+    def check_each_days_accumulation(user_accumulation)
+      days = []
+      daily.fetch(:data).each_with_index do |day, index|
+        if day.has_key?(:precipAccumulation)
+          day_accumulation = day.fetch(:precipAccumulation)
+        else
+          day_accumulation = 0
+        end
+        if day_accumulation >= user_accumulation
+          days << [(Time.now + index.days), day_accumulation ]
+        end
+      end
+      days
+    end
+
   def currently
     data.fetch(:currently)
   end
