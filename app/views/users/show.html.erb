@@ -27,38 +27,22 @@
     <thead>
       <tr>
         <th>Location</th>
-        <th>Forcast</th>
+        <th>Forecast</th>
         <th>Active</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="negative">
-        <td>Vail</td>
-        <td>No Snow on the way</td>
-        <td class="collapsing">
-              <div class="ui fitted slider checkbox checked">
-                <input type="checkbox" tabindex="0" class="hidden"> <label></label>
-              </div>
-            </td>
-      </tr>
-      <tr class="positive">
-        <td>Tahoe</td>
-        <td><i class="icon checkmark"></i>Snow on the way</td>
-        <td class="collapsing">
-              <div class="ui fitted slider checkbox checked">
-                <input type="checkbox" tabindex="0" class="hidden"> <label></label>
-              </div>
-            </td>
-      </tr>
+      <% current_user.favorites.each do |favorite| %>
       <tr>
-        <td>Copper</td>
-        <td>Unknown</td>
+        <td><%= link_to favorite.mountain.name, mountain_path(favorite.mountain) %></td>
+        <td></td>
         <td class="collapsing">
               <div class="ui fitted slider checkbox checked">
                 <input type="checkbox" tabindex="0" class="hidden"> <label></label>
               </div>
             </td>
       </tr>
+      <% end %>
     </tbody>
   </table>
       </div>
