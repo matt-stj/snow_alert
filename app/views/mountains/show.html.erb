@@ -5,15 +5,7 @@
         <br>
 
       <div class="ui statistics">
-        <div class="small statistic">
-          <div class="value">
-            <%= @weather.current_temp%>°F
-          </div>
-          <div class="label">
-            Currently
-            <p class="small-label">Feels like: <%= @weather.current_temp_feels_like %>°F</p>
-          </div>
-        </div>
+
         <div class="small statistic">
           <div class="value">
             <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
@@ -22,7 +14,7 @@
             Today's High
           </div>
         </div>
-        <div class="small statistic">
+        <div class="statistic">
           <div class="value">
             <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
           </div>
@@ -30,9 +22,26 @@
             Today's Low
           </div>
         </div>
+        <div class="statistic">
+          <div class="value downcase">
+            <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
+          </div>
+          <div class="label">
+            Nearest Storm
+          </div>
+        </div>
       </div>
 
       <h2>Right Now:</h2>
+      <div class="small statistic">
+        <div class="value">
+          <%= @weather.current_temp%>°F
+        </div>
+        <div class="label">
+          Currently
+          <p class="small-label">Feels like: <%= @weather.current_temp_feels_like %>°F</p>
+        </div>
+      </div>
       <%= @weather.current_summary%>
       <p>Current Chance of Snow: <%= @weather.current_precip_prob %>% with <%= @weather.current_precip_intensity%>"</p>
 
@@ -43,38 +52,39 @@
       <h2>Next 7 Days: </h2>
         <p><%= @weather.week_summary%></p>
       </div>
-    </div>
-    <br>
-    <table class="ui orange table center aligned">
-      <thead>
-        <tr><th>Day</th>
-          <th>Snow Probabilty (%)</th>
-          <th>Accumulation (in)</th>
-          <th>High (°F)</th>
-          <th>Low (°F)</th>
-          <th>Summary</th>
-        </tr></thead><tbody>
-          <% @weather.daily.fetch(:data).each_with_index do |day, index| %>
-          <tr>
-            <td><p><%= (Time.now + index.day).strftime("%a, %b %e")%></p></td>
-            <td><%= (day.fetch(:precipProbability).to_f * 100).to_i%></td>
-            <td>
-              <% if day.keys.include?(:precipAccumulation) %>
-                <% if day.fetch(:precipAccumulation).to_i > 5 %>
-                  <div class="numberCircle">
-                    <p class="bold"><%= day.fetch(:precipAccumulation).to_i  %>"</p>
-                  </div>
+      <br>
+      <table class="ui black table center aligned">
+        <thead>
+          <tr><th>Day</th>
+            <th>Snow Probabilty (%)</th>
+            <th>Accumulation (in)</th>
+            <th>High (°F)</th>
+            <th>Low (°F)</th>
+            <th>Summary</th>
+          </tr></thead><tbody>
+            <% @weather.daily.fetch(:data).each_with_index do |day, index| %>
+            <tr>
+              <td><p><%= (Time.now + index.day).strftime("%a, %b %e")%></p></td>
+              <td><%= (day.fetch(:precipProbability).to_f * 100).to_i%></td>
+              <td>
+                <% if day.keys.include?(:precipAccumulation) %>
+                  <% if day.fetch(:precipAccumulation).to_i > 5 %>
+                    <div class="numberCircle">
+                      <p class="bold"><%= day.fetch(:precipAccumulation).to_i  %>"</p>
+                    </div>
+                  <% else %>
+                    <%= day.fetch(:precipAccumulation).to_i %>"
+                  <% end %>
                 <% else %>
-                  <%= day.fetch(:precipAccumulation).to_i %>"
+                  0"
                 <% end %>
-              <% else %>
-                0"
-              <% end %>
-            </td>
-            <td><%= day.fetch(:temperatureMax).to_i%></td>
-            <td><%= day.fetch(:temperatureMin).to_i%></td>
-            <td><%= day.fetch(:summary)%></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+              </td>
+              <td><%= day.fetch(:temperatureMax).to_i%></td>
+              <td><%= day.fetch(:temperatureMin).to_i%></td>
+              <td><%= day.fetch(:summary)%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+    </div>
