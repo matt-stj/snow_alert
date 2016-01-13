@@ -58,5 +58,14 @@ $( document ).ready(function() {
       duration: 1000});
   }, delay);
 
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+
 
 });

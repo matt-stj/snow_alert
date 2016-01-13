@@ -1,29 +1,45 @@
+
+
+
+
+
 <div class="ui two column centered grid">
   <div class="ui middle aligned center aligned grid">
     <div class="column">
       <h2 class="ui green image header login-text">
         <div class="content push-down">
-          <img class="ui small centered circular image" src="https://graph.facebook.com/<%= current_user.uid %>/picture?type=large">
+          <i class="tree icon"></i>
+          Just a couple questions and you're set!
         </div>
       </h2>
-      <form class="ui large form login-form">
+      <%= form_for @user, :html => {class: 'ui large form login-form'} do |f| %>
         <div class="ui stacked segment">
           <div class="field">
-            <div class="ui left icon input">
-              <i class="dashboard icon"></i>
-              <input type="text" name="snow_fall_probability" placeholder="Snowfall Probability" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=&quot;); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+            <div class="ui input">
+              <%= f.label :snow_preference, "Email Address", class: "input" %>
+            </div>
+          <div class="field">
+            <div class="ui input">
+              <%= f.text_field :email, class: "input" %>
             </div>
           </div>
           <div class="field">
-            <div class="ui left icon input">
-              <i class="resize vertical icon"></i>
-              <input type="snowfall_amount" name="snowfall_amount" placeholder="Snowfall Amount''" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=&quot;); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+            <div class="ui input">
+              <%= f.label :snow_preference, "How much snowfall should we alert you for? (inches)", class: "input" %>
+            </div>
+            <div class="field">
+              <div class="ui input">
+                <%= f.text_field :snow_preference, class: "input" %>
+              </div>
             </div>
           </div>
-          <div class="ui fluid large primary submit button">Get Alerts</div>
+          <br>
+          <%= f.submit "Save Changes", class: "ui fluid large primary submit button" %>
+          <% end %>
         </div>
-        <div class="ui error message"></div>
-      </form>
 
+
+    </div>
+  </div>
 
 </div>

@@ -2,6 +2,9 @@
   <br>
   <br>
 
+  <div class="left">
+
+  </div>
   <h1>My Mountain Dashboard</h1>
 
   <div class="ui divider"></div>
@@ -15,6 +18,8 @@
           <a class="item">
             Preferences
           </a>
+          <p>Snowfall preference: <%= current_user.snow_preference %>"</p>
+          <p>email: <%= current_user.email %></p>
         </div>
       </div>
       <div class="twelve wide column">
