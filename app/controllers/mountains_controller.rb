@@ -5,4 +5,8 @@ class MountainsController < ApplicationController
     @weather = Weather.new(@mountain.latitude, @mountain.longitude)
   end
 
+  def index
+    @mountains = Mountain.all
+  end
+
 end

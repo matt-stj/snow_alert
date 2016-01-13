@@ -10,7 +10,7 @@ get '/auth/facebook/callback' => 'sessions#create'
 get '/auth/facebook', as: 'login'
 
 resources :users, only: [:show, :edit, :update]
-resources :mountains, only: [:show]
+resources :mountains, only: [:index, :show]
 
 
 
