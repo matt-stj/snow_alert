@@ -29,20 +29,23 @@
     <thead>
       <tr>
         <th>Location</th>
-        <th>Forecast</th>
-        <th>Active</th>
+        <th>Remove from favorites</th>
       </tr>
     </thead>
     <tbody>
       <% current_user.favorites.each do |favorite| %>
       <tr>
         <td><%= link_to favorite.mountain.name, mountain_path(favorite.mountain) %></td>
-        <td></td>
-        <td class="collapsing">
-              <div class="ui fitted slider checkbox checked">
-                <input type="checkbox" tabindex="0" class="hidden"> <label></label>
-              </div>
-            </td>
+        <td>
+          <% if current_user.favorited?(favorite.mountain.id) %>
+             <%= link_to user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch do %>
+            <i class="remove circle icon large red"></i>
+            <% end %>
+          <% else %>
+          <%= link_to "Remove Favorite", user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch %>
+            <i class="check circle icon">Add to Favorite</i>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>

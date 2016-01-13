@@ -1,7 +1,4 @@
 
-
-
-
   main {
     flex: 1 0 auto;
   }
@@ -113,4 +110,12 @@
 .resorts {
   padding-top: 30px;
   padding-bottom: 30px;
+}
+
+.remove {
+  color: red !important;
+}
+
+.add {
+  color: green !important;
 }
