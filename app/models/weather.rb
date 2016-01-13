@@ -1,0 +1,85 @@
+class Weather
+  attr_reader :data
+
+  def initialize(latitude, longitude)
+    @data = ForecastIOService.new.forecast(latitude, longitude)
+  end
+
+  def currently
+    data.fetch(:currently)
+  end
+
+  def minutely
+    data.fetch(:minutely)
+  end
+
+  def hourly
+    data.fetch(:hourly)
+  end
+
+  def daily
+    data.fetch(:daily)
+  end
+
+  def today
+    daily.fetch(:data).first
+  end
+
+  def current_summary
+    currently.fetch(:summary)
+  end
+
+  def next_hour_summary
+    if minutely
+      minutely.fetch(:summary)
+    else
+      current_summary
+    end
+  end
+
+  def next_24_hour_summary
+    hourly.fetch(:summary)
+  end
+
+  def week_summary
+    daily.fetch(:summary)
+  end
+
+  def current_temp
+    currently.fetch(:temperature)
+  end
+
+  def current_temp_feels_like
+    currently.fetch(:apparentTemperature)
+  end
+
+  def current_wind_speed
+    currently.fetch(:windSpeed)
+  end
+
+  def current_precip_prob
+    currently.fetch(:precipProbability)
+  end
+
+  def current_precip_intensity
+    currently.fetch(:precipIntensity)
+  end
+
+  def nearest_storm
+    currently.fetch(:nearestStormDistance)
+  end
+
+
+  def todays_weather_summary
+    today.fetch(:summary)
+  end
+
+  def todays_max
+    today.fetch(:temperatureMax)
+  end
+
+  def todays_min
+    today.fetch(:temperatureMin)
+  end
+
+end

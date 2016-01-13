@@ -1,17 +1,17 @@
 <div class="ui one column stackable center aligned page grid">
    <div class="column twelve wide">
 
-      <h1> <%= @weather.resort.name %> Forecast</h1>
+      <h1> <%= @mountain.name %> Forecast</h1>
         <br>
 
       <div class="ui statistics">
         <div class="small statistic">
           <div class="value">
-            <%= @weather.current_temp.to_i%>°F
+            <%= @weather.current_temp%>°F
           </div>
           <div class="label">
             Currently
-            <p class="small-label">Feels like: <%= @weather.current_feels_like_temp.to_i%>°F</p>
+            <p class="small-label">Feels like: <%= @weather.current_temp_feels_like %>°F</p>
           </div>
         </div>
         <div class="small statistic">
@@ -33,7 +33,7 @@
       </div>
 
       <h2>Right Now:</h2>
-      <%= @weather.current_condition%>
+      <%= @weather.current_summary%>
       <p>Current Chance of Snow: <%= @weather.current_precip_prob %>% with <%= @weather.current_precip_intensity%>"</p>
 
       <h2>Next Hour:</h2>
@@ -54,26 +54,26 @@
           <th>Low (°F)</th>
           <th>Summary</th>
         </tr></thead><tbody>
-          <% @weather.daily_forecast.data.each_with_index do |day, index| %>
+          <% @weather.daily.fetch(:data).each_with_index do |day, index| %>
           <tr>
             <td><p><%= (Time.now + index.day).strftime("%a, %b %e")%></p></td>
-            <td><%= (day.fetch("precipProbability").to_f * 100).to_i%></td>
+            <td><%= (day.fetch(:precipProbability).to_f * 100).to_i%></td>
             <td>
-              <% if day.keys.include?("precipAccumulation") %>
-                <% if day.fetch("precipAccumulation").to_i > 5 %>
+              <% if day.keys.include?(:precipAccumulation) %>
+                <% if day.fetch(:precipAccumulation).to_i > 5 %>
                   <div class="numberCircle">
-                    <p class="bold"><%= day.fetch("precipAccumulation").to_i  %>"</p>
+                    <p class="bold"><%= day.fetch(:precipAccumulation).to_i  %>"</p>
                   </div>
                 <% else %>
-                  <%= day.fetch("precipAccumulation").to_i %>"
+                  <%= day.fetch(:precipAccumulation).to_i %>"
                 <% end %>
               <% else %>
                 0"
               <% end %>
             </td>
-            <td><%= day.fetch("temperatureMax").to_i%></td>
-            <td><%= day.fetch("temperatureMin").to_i%></td>
-            <td><%= day.fetch("summary")%></td>
+            <td><%= day.fetch(:temperatureMax).to_i%></td>
+            <td><%= day.fetch(:temperatureMin).to_i%></td>
+            <td><%= day.fetch(:summary)%></td>
           </tr>
           <% end %>
         </tbody>
