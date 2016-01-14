@@ -1,29 +1,32 @@
 require 'test_helper'
 
-class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
+class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
   include Capybara::DSL
-
   def setup
     Capybara.app = SnowAlert::Application
     stub_omniauth
-
-    mountain = Mountain.create(name: "mountain", latitude: "39.523", longitude: "-104.325")
   end
 
-  test "User adds favorite resorts" do
-    VCR.use_cassette('forecast_io_service#forecast') do
-      visit "/"
-      click_link "Login"
-      assert_equal edit_user_path(User.last), current_path
+  test "logging in" do
+    visit "/"
+    assert_equal 200, page.status_code
+    click_link "Login"
+    assert_equal edit_user_path(User.last), current_path
+    assert page.has_content?("Matt Test")
+  end
 
-      assert_equal 0, User.last.favorites.count
+  test "logging out" do
+    skip
+    visit "/"
+    assert_equal 200, page.status_code
+    click_link "Login"
 
-      visit mountains_path
-      click_link("mountain")
-      click_link("Add to Favorites")
-
-      assert_equal 1, User.last.favorites.count
+    within('.right') do
+      refute page.has_content?("Login")
     end
+
+
+    assert page_has_content?("Login")
   end
 
   def stub_omniauth

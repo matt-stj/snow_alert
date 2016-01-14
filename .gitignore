@@ -23,4 +23,3 @@
 /coverage
 
 # Ignore VCR casette files
-/test/cassettes/
