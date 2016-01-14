@@ -11,6 +11,9 @@ require 'vcr'
 
 class ActiveSupport::TestCase
   VCR.configure do |config|
+    config.before_record do |i|
+      i.response.body.force_encoding('UTF-8')
+    end
     config.cassette_library_dir = "test/cassettes"
     config.hook_into :webmock
   end
