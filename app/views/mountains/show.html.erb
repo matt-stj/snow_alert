@@ -1,4 +1,3 @@
-
 <br>
 <br>
 <br>
@@ -21,8 +20,8 @@
         <% end %>
         <br>
 
+    <% cache "#{@mountain.name.parameterize}-data-#{Time.now.strftime("%Y-%m-%e-%H")}" do %>
       <div class="ui statistics">
-
         <div class="small statistic">
           <div class="value">
             <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
@@ -103,5 +102,5 @@
             <% end %>
           </tbody>
         </table>
-
+        <% end %>
     </div>
