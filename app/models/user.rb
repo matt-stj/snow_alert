@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :favorites
-  has_many :resorts, through: :favorites
+  has_many :mountains, through: :favorites
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
   validates :email, uniqueness: true, on: :update
   validates :snow_preference, numericality: true, on: :update
@@ -37,9 +37,5 @@ class User < ActiveRecord::Base
       add_favorite(params['favorite_action'].fetch('add'))
     end
   end
-
-  private
-
-
 
 end
