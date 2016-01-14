@@ -15,6 +15,20 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Matt Test")
   end
 
+  test "logging out" do
+    skip
+    visit "/"
+    assert_equal 200, page.status_code
+    click_link "Login"
+
+    within('.right') do
+      refute page.has_content?("Login")
+    end
+
+
+    assert page_has_content?("Login")
+  end
+
   def stub_omniauth
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({"provider"=>"facebook",
