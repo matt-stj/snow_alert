@@ -13,7 +13,6 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
     click_link "Login"
     assert_equal edit_user_path(User.last), current_path
     assert page.has_content?("Matt Test")
-    assert page.has_link?("Logout")
   end
 
   def stub_omniauth

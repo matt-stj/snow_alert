@@ -1,13 +1,15 @@
 require 'test_helper'
 
-class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
+class UserCanRemoveFavoriteMountainTest < ActionDispatch::IntegrationTest
+  attr_reader :mountain
+
   include Capybara::DSL
 
   def setup
     Capybara.app = SnowAlert::Application
     stub_omniauth
 
-    mountain = Mountain.create(name: "mountain", latitude: "39.523", longitude: "-104.325")
+    @mountain = Mountain.create(name: "mountain", latitude: "39.523", longitude: "-104.325")
   end
 
   test "User adds favorite resorts" do
@@ -18,11 +20,16 @@ class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
 
       assert_equal 0, User.last.favorites.count
 
-      visit mountains_path
-      click_link("mountain")
-      click_link("Add to Favorites")
+      User.last.favorites.create(mountain_id: mountain.id)
 
       assert_equal 1, User.last.favorites.count
+
+      visit mountains_path
+      click_link("mountain")
+      save_and_open_page
+      click_link("Remove from Favorites")
+
+      assert_equal 0, User.last.favorites.count
     end
   end
 
