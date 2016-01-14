@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_many :favorites
   has_many :resorts, through: :favorites
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :update }
+  validates :email, uniqueness: true, on: :update
+  validates :snow_preference, numericality: true, on: :update
+  validates :snow_preference, :inclusion => { :in => 1..20, :message => "Snowfall should be between 1 to 20" }, on: :update
 
   def self.from_omniauth(auth_info)
     where(uid: auth_info[:uid]).first_or_create do |new_user|
@@ -33,5 +37,9 @@ class User < ActiveRecord::Base
       add_favorite(params['favorite_action'].fetch('add'))
     end
   end
+
+  private
+
+
 
 end

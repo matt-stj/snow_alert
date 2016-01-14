@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   def create
        if user = User.find_by_uid(request.env["omniauth.auth"].uid)
          session[:user_id] = user.id
-         redirect_to user_path(current_user)
+         redirect_to user_path(user)
        elsif user = User.from_omniauth(request.env["omniauth.auth"])
          session[:user_id] = user.id
-         redirect_to edit_user_path(current_user)
+         redirect_to edit_user_path(user)
        else
          redirect_to root_path
          flash[:notice] = "There was an error, please try again."
