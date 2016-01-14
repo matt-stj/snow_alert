@@ -20,7 +20,7 @@
         <% end %>
         <br>
 
-    <% cache "#{@mountain.name.parameterize}-data-#{Time.now.strftime("%Y-%m-%e-%H")}" do %>
+    <% cache cache_key_for_mountain(@mountain) do %>
       <div class="ui statistics">
         <div class="small statistic">
           <div class="value">
