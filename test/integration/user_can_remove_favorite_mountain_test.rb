@@ -26,7 +26,7 @@ class UserCanRemoveFavoriteMountainTest < ActionDispatch::IntegrationTest
 
       visit mountains_path
       click_link("mountain")
-      save_and_open_page
+      
       click_link("Remove from Favorites")
 
       assert_equal 0, User.last.favorites.count

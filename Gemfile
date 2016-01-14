@@ -36,4 +36,5 @@ group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
   gem 'launchy'
+  gem 'shoulda'
 end

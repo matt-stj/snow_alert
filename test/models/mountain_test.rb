@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MountainTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should have_many(:favorites)
+  should have_many(:users)
 end
