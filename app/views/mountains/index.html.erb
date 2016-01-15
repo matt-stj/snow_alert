@@ -1,15 +1,30 @@
 <br>
 <br>
 <br>
-<div class="ui search right">
-  <%= form_tag(search_path, :method => "get", id: "seach-form") do %>
-     <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
-     <% end %>
-</div>
+
+<h1>Browse Mountains</h1>
 
 <div class="ui link list">
-  <div class="item header">Mountains</div>
-  <% @mountains.each do |mountain| %>
-    <%= link_to mountain.name, mountain_path(mountain), class: "item" %>
+  <table>
+  <% @mountains.in_groups_of(5, false) do |mountain_row| %>
+    <tr>
+      <% for mountain in mountain_row %>
+        <td><%= link_to mountain.name, mountain_path(mountain), class: "item" %></td>
+      <% end %>
+    </tr>
   <% end %>
+  </table>
 </div>
+
+<table>
+  <% Mountain.group(:state).count.keys.sort_by { |k| k }.each do |state_code| %>
+    <h4><%= state_code %></h4>
+    <% Mountain.state(state_code).each do |mountain| %>
+    <li>
+      <ul>
+        <%= link_to mountain.name, mountain_path(mountain) %>
+      </ul>
+    </li>
+    <% end %>
+  <% end %>
+</table>
