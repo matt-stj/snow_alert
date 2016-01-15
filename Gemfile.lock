@@ -166,6 +166,8 @@ GEM
     rdoc (4.2.1)
       json (~> 1.4)
     ref (2.0.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     safe_yaml (1.0.4)
     sass (3.4.20)
     sdoc (0.4.1)
@@ -198,8 +200,6 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -239,6 +239,7 @@ DEPENDENCIES
   pry
   rails (= 4.2.4)
   rails_12factor
+  responders
   sdoc (~> 0.4.0)
   semantic-ui-sass!
   shoulda
@@ -246,7 +247,6 @@ DEPENDENCIES
   skylight
   spring
   therubyracer
-  turbolinks
   uglifier (>= 1.3.0)
   vcr
   web-console (~> 2.0)

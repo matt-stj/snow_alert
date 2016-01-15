@@ -1,3 +1,12 @@
+<br>
+<br>
+<br>
+<div class="ui search right">
+  <%= form_tag(search_path, :method => "get", id: "seach-form") do %>
+     <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
+     <% end %>
+</div>
+
 <div class="ui link list">
   <div class="item header">Mountains</div>
   <% @mountains.each do |mountain| %>
