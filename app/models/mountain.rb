@@ -1,15 +1,15 @@
+require 'geocoder'
+
 class Mountain < ActiveRecord::Base
   has_many :favorites
   has_many :users, through: :favorites
 
-  def closest_mountain(latitude, longitude)
-    trunc_latitude = truncate_coordinate(latitude)
-    truncate_longitude = truncate_coordinate(longitude)
-    Mountain.where("latitude LIKE :latitude", latitude: "%#{trunc_latitude}%").where("longitude LIKE :longitude", longitude: "%#{truncate_longitude}%")
+  def search(query)
+    raw_data = Geocoder.search(query)
+    latitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lat")
+    longitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lng")
+    Weather.new(latitude, longitude)
   end
 
-  def truncate_coordinate(coordinate)
-    string = sprintf "%.3f", coordinate
-    string[0..(string.length - 2)]
-  end
+
 end

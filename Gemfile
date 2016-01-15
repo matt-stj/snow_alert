@@ -16,7 +16,8 @@ gem 'figaro'
 gem 'rails_12factor'
 gem 'hurley'
 gem 'whenever', '0.8.4', :require => false
-gem "skylight"
+gem 'skylight'
+gem 'geocoder'
 
 
 group :development, :test do
