@@ -25,7 +25,7 @@ class Weather
   end
 
   def minutely
-    data.fetch(:minutely)
+    data.fetch(:minutely) if data[:minutely]
   end
 
   def hourly

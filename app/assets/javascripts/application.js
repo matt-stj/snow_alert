@@ -18,7 +18,12 @@
 $( document ).ready(function() {
   searchMountains();
 
-  
+  $("#search").on("keypress", function (e) {
+    if (e.keyCode == 13) {
+        return false;
+        }
+    });
+
   $('.ui.dropdown')
   .dropdown();
 

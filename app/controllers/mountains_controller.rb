@@ -6,14 +6,7 @@ class MountainsController < ApplicationController
   end
 
   def search
-    location = Geocode.new(params[:search])
-    record = location.closest_mountain(location.latitude, location.longitude)
-    if record == []
-      @mountain = Mountain.create(name: params[:search].titleize, latitude: location.latitude, longitude: location.longitude, state: location.state)
-    else
-      @mountain = Mountain.find(record.first.id)
-    end
-    redirect_to mountain_path(@mountain)
+    @mountains = Mountain.all
   end
 
   def index

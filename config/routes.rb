@@ -18,4 +18,5 @@ get '/search', to: 'mountains#search'
 
 
 
+
 end
