@@ -1,12 +1,12 @@
 class Geocode
   attr_reader :raw_data
-  attr_accessor :latitude, :longitude, :name
+  attr_accessor :latitude, :longitude, :name, :state
 
   def initialize(query)
-    @raw_data = Geocoder.search(query)
-    @latitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lat")
-    @longitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lng")
-    @name = raw_data.first.data.fetch("address_components").first.fetch("long_name")
+    @raw_data = Geocoder.search(query).first
+    @latitude = raw_data.latitude
+    @longitude = raw_data.longitude
+    @state = raw_data.state
   end
 
   def closest_mountain(latitude, longitude)

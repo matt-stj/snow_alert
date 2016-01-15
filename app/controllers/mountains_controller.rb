@@ -9,7 +9,7 @@ class MountainsController < ApplicationController
     location = Geocode.new(params[:search])
     record = location.closest_mountain(location.latitude, location.longitude)
     if record == []
-      @mountain = Mountain.create(name: location.name, latitude: location.latitude, longitude: location.longitude)
+      @mountain = Mountain.create(name: params[:search].titleize, latitude: location.latitude, longitude: location.longitude, state: location.state)
     else
       @mountain = Mountain.find(record.first.id)
     end

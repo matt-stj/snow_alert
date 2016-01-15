@@ -7,7 +7,7 @@
 <div class="ui one column stackable center aligned page grid">
    <div class="column twelve wide">
 
-      <h1> <%= @mountain.name %> Forecast</h1>
+      <h1> <%= @mountain.name %>, <%= @mountain.state %> Forecast</h1>
         <% if current_user.favorited?(@mountain.id) %>
            <%= link_to user_path(current_user, :favorite_action => { :remove => @mountain.id }), method: :patch do %>
           <i class="remove circle icon large red"></i><span class="remove">Remove from Favorites</span>
