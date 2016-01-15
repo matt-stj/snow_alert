@@ -6,10 +6,14 @@ class MountainsController < ApplicationController
   end
 
   def search
-    coordinates = Geocode.new(params[:search]).assign_values
-    @mountain = Mountain.find_or_create_by_latitude_and_longitude(name: params[:search])
-    @weather = Weather.new()
-    binding.pry
+    location = Geocode.new(params[:search])
+    record = location.closest_mountain(location.latitude, location.longitude)
+    if record == []
+      @mountain = Mountain.create(name: location.name, latitude: location.latitude, longitude: location.longitude)
+    else
+      @mountain = Mountain.find(record.first.id)
+    end
+    redirect_to mountain_path(@mountain)
   end
 
   def index
@@ -26,5 +30,10 @@ class MountainsController < ApplicationController
     string = sprintf "%.3f", coordinate
     string[0..(string.length - 2)]
   end
+
+  def mountain_params
+      params.require(:mountain).permit(:name, :latitue, :longitude)
+    end
+
 
 end
