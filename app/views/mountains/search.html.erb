@@ -1,15 +1,19 @@
 <br>
 <br>
 <br>
-<div class="ui search right">
-  <%= form_tag( id: "seach-form") do %>
-     <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
-     <% end %>
-</div>
+<div class="ui container">
+  <div class="ui search">
+    <%= form_tag( id: "seach-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
+    <% end %>
+  </div>
 
-<div class="ui link list">
-  <div class="item header">Mountains</div>
-  <% @mountains.each do |mountain| %>
-    <%= link_to mountain.name, mountain_path(mountain), class: "item" %>
-  <% end %>
+  <div class="ui grid container">
+    <% @mountains.each do |mountain| %>
+    <div class="four wide column">
+      <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
+    </div>
+    <% end %>
+  </div>
+
 </div>

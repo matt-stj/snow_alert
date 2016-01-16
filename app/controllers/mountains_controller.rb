@@ -6,7 +6,7 @@ class MountainsController < ApplicationController
   end
 
   def search
-    @mountains = Mountain.all
+    @mountains = Mountain.order(name: :asc)
   end
 
   def index
