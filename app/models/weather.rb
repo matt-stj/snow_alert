@@ -81,7 +81,11 @@ class Weather
   end
 
   def nearest_storm
-    currently.fetch(:nearestStormDistance)
+    if currently[:nearestStormDistance]
+      currently.fetch(:nearestStormDistance)
+    else
+      "--"
+    end
   end
 
 
