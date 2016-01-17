@@ -8,7 +8,7 @@
     <% end %>
   </div>
 
-  <div class="ui grid container">
+  <div class="ui grid container search-results">
     <% @mountains.each do |mountain| %>
     <div class="four wide column">
       <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>

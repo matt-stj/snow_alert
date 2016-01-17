@@ -8,15 +8,17 @@
    <div class="column twelve wide">
 
       <h1> <%= @mountain.name %>, <%= @mountain.state %> - Forecast</h1>
+      <% if current_user %>
         <% if current_user.favorited?(@mountain.id) %>
            <%= link_to user_path(current_user, :favorite_action => { :remove => @mountain.id }), method: :patch do %>
-          <i class="remove circle icon large red"></i><span class="remove">Remove from Favorites</span>
-          <% end %>
-          <% else %>
-          <%= link_to user_path(current_user, :favorite_action => { :add => @mountain.id }), method: :patch do %>
-         <i class="add circle icon large green"></i><span class="add">Add to Favorites</span>
-         <% end %>
+           <i class="remove circle icon large red"></i><span class="remove">Remove from Favorites</span>
+           <% end %>
+        <% else %>
+           <%= link_to user_path(current_user, :favorite_action => { :add => @mountain.id }), method: :patch do %>
+           <i class="add circle icon large green"></i><span class="add">Add to Favorites</span>
+           <% end %>
         <% end %>
+      <% end %>
         <br>
 
     <% cache cache_key_for_mountain(@mountain) do %>

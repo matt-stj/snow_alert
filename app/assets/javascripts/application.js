@@ -80,7 +80,7 @@ $( document ).ready(function() {
 function searchMountains() {
   $("#search").on("keyup", function() {
     var filter = $(this).val();
-    var mountains = $(".list").children()
+    var mountains = $(".search-results").children()
     $.each(mountains, function(){
       if ($(this).text().search(new RegExp(filter, "i")) === -1) {
         $(this).addClass("hidden")
