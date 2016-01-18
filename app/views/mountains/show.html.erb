@@ -22,32 +22,40 @@
         <br>
 
     <% cache cache_key_for_mountain(@mountain) do %>
-      <div class="ui statistics">
-        <div class="small statistic">
-          <div class="value">
-            <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
-          </div>
-          <div class="label">
-            Today's High
+    <div class="ui container">
+      <!-- <div class="two column center aligned centered grid">
+        <div class="four column centered row"> -->
+          <div class="ui statistics">
+            <div class="small statistic">
+              <div class="value">
+                <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
+              </div>
+              <div class="label">
+                Today's High
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value">
+                <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
+              </div>
+              <div class="label">
+                Today's Low
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value downcase">
+                <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
+              </div>
+              <div class="label">
+                Nearest Storm
+              </div>
+            </div>
           </div>
         </div>
-        <div class="statistic">
-          <div class="value">
-            <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
-          </div>
-          <div class="label">
-            Today's Low
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value downcase">
-            <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
-          </div>
-          <div class="label">
-            Nearest Storm
-          </div>
-        </div>
-      </div>
+
+        <!-- </div>
+
+      </div> -->
 
       <h2>Right Now:</h2>
       <div class="small statistic">
@@ -70,7 +78,7 @@
         <p><%= @weather.week_summary%></p>
       </div>
       <br>
-      <table class="ui black table center aligned">
+      <table class="ui black table center aligned mtn-table">
         <thead>
           <tr><th>Day</th>
             <th>Snow Probabilty (%)</th>

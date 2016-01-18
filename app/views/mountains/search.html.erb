@@ -1,17 +1,32 @@
-<br>
-<br>
-<br>
-<div class="ui container">
-  <div class="ui search">
-    <%= form_tag( id: "seach-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
-    <% end %>
+<div class="ui container search-header centered">
+  <h1>Search North American Mountains</h1>
+</div>
+
+<div class="ui five column centered grid">
+  <div class="column">
+    <div class="ui container">
+      <div class="ui icon input search">
+        <%= form_tag( id: "seach-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search for a Mountain" %>
+        <% end %>
+        <i class="search icon"></i>
+      </div>
   </div>
+</div>
 
   <div class="ui grid container search-results">
     <% @mountains.each do |mountain| %>
     <div class="four wide column">
       <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
+      <% if current_user.favorited?(mountain.id) %>
+      <%= link_to user_path(current_user, :favorite_action => { :remove => mountain.id }), method: :patch do %>
+        <i class="remove circle icon red"></i>
+      <% end %>
+      <% else %>
+        <%= link_to user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch do %>
+          <i class="add circle green icon"></i>
+        <% end %>
+      <% end %>
     </div>
     <% end %>
   </div>

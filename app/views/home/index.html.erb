@@ -1,5 +1,6 @@
 <div class="background">
   <div class="header-text">
+    <% if !current_user %>
     <h1 class="ui inverted center aligned white jumbo-font outline">
       Don't Miss Another Powder Day
     </h1>
@@ -7,6 +8,20 @@
       <%= link_to login_path, class: "ui facebook huge button nudge-down home-btn" do %>
         <i class="facebook icon"></i> Login with Facebook
       <% end %>
+      <% else %>
+      <div class="ui container">
+        <h1 class="ui inverted center aligned white jumbo-font outline">
+          Add your favorite mountains to receive snow alerts.
+        </h1>
+        <h3 class="ui center aligned os300i white outline sub-header">Search or browse all mountains in North America</h3>
+        <%= link_to search_path, class: "ui huge blue button nudge-down home-btn" do %>
+        <i class="search icon"></i>Search
+        <% end %>
+        <%= link_to mountains_path, class: "ui huge green button nudge-down home-btn" do %>
+        <i class="list icon"></i>Browse
+        <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
 
