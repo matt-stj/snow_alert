@@ -12,11 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require semantic-ui
 //= require_tree .
 
 $( document ).ready(function() {
+  searchMountains();
+
+  $("#search").on("keypress", function (e) {
+    if (e.keyCode == 13) {
+        return false;
+        }
+    });
 
   $('.ui.dropdown')
   .dropdown();
@@ -69,3 +75,21 @@ $( document ).ready(function() {
 
 
 });
+
+
+function searchMountains() {
+  $("#search").on("keyup", function() {
+    var filter = $(this).val();
+    var mountains = $(".search-results").children()
+    $.each(mountains, function(){
+      if ($(this).text().search(new RegExp(filter, "i")) === -1) {
+        $(this).addClass("hidden")
+      }
+      else {
+        $(this).removeClass("hidden")
+      }
+    })
+
+  })
+
+}

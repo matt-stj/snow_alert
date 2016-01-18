@@ -1,6 +1,24 @@
-<div class="ui link list">
-  <div class="item header">Mountains</div>
-  <% @mountains.each do |mountain| %>
-    <%= link_to mountain.name, mountain_path(mountain), class: "item" %>
-  <% end %>
+<br>
+<br>
+<br>
+
+<div class="ui two column centered grid">
+  <div class="column">
+    <h1>Browse Mountains</h1>
+
+    <div class="browse">
+      <% Mountain.group(:state).count.keys.sort_by { |k| k }.each do |state_code| %>
+      <h4><%= state_code %></h4>
+      <% Mountain.state(state_code).in_groups_of(4, false) do |mountain_row| %>
+      <tr>
+        <% for mountain in mountain_row %>
+        <td>
+          --<%= link_to mountain.name, mountain_path(mountain) %>--
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -21,19 +21,19 @@ class Weather
     end
 
   def currently
-    data.fetch(:currently)
+    data.fetch(:currently) if data[:currently]
   end
 
   def minutely
-    data.fetch(:minutely)
+    data.fetch(:minutely) if data[:minutely]
   end
 
   def hourly
-    data.fetch(:hourly)
+    data.fetch(:hourly) if data[:hourly]
   end
 
   def daily
-    data.fetch(:daily)
+    data.fetch(:daily) if data[:daily]
   end
 
   def today
@@ -77,13 +77,16 @@ class Weather
   end
 
   def current_precip_intensity
-    currently.fetch(:precipIntensity)
+    currently.fetch(:precipIntensity) if currently[:precipIntensity]
   end
 
   def nearest_storm
-    currently.fetch(:nearestStormDistance)
+    if currently[:nearestStormDistance]
+      currently.fetch(:nearestStormDistance)
+    else
+      "--"
+    end
   end
-
 
   def todays_weather_summary
     today.fetch(:summary)

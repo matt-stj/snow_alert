@@ -5,8 +5,20 @@ class MountainsController < ApplicationController
     @weather = Weather.new(@mountain.latitude, @mountain.longitude)
   end
 
-  def index
-    @mountains = Mountain.all
+  def search
+    @mountains = Mountain.order(state: :asc)
   end
+
+  def index
+    @mountains = Mountain.order("name ASC")
+  end
+
+
+  private
+
+  def mountain_params
+      params.require(:mountain).permit(:name, :latitue, :longitude)
+    end
+
 
 end
