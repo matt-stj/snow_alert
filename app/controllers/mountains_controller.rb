@@ -10,19 +10,11 @@ class MountainsController < ApplicationController
   end
 
   def index
-    if params[:search]
-      @mountains = Mountain.search(params[:search]).order("created_at DESC")
-    else
-      @mountains = Mountain.order("name ASC")
-    end
+    @mountains = Mountain.order("name ASC")
   end
+
 
   private
-
-  def truncate_coordinate(coordinate)
-    string = sprintf "%.3f", coordinate
-    string[0..(string.length - 2)]
-  end
 
   def mountain_params
       params.require(:mountain).permit(:name, :latitue, :longitude)

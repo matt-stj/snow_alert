@@ -29,3 +29,17 @@ class ActionDispatch::IntegrationTest
     OmniAuth.config.mock_auth[:facebook] = nil
   end
 end
+
+
+DatabaseCleaner.strategy = :transaction
+
+class MiniTest::Spec
+  def setup
+    DatabaseCleaner.start
+  end
+
+  def teardown
+    DatabaseCleaner.clean
+  end
+
+end

@@ -18,7 +18,7 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
   test "adding additional profile info" do
     visit '/'
     click_link "Login"
-
+    save_and_open_page
     fill_in('user[email]', :with => 'hi@gmail.com')
     fill_in('user[snow_preference]', :with => '1')
     click_button('Save Changes')
@@ -37,7 +37,6 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
 
 
   test "logging out" do
-    skip
     visit "/"
     assert_equal 200, page.status_code
     click_link "Login"
@@ -46,7 +45,7 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
       refute page.has_content?("Login")
     end
 
-    assert page_has_content?("Login")
+    click_link("Log out")
   end
 
   def stub_omniauth
