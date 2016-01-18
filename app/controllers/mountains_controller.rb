@@ -10,7 +10,7 @@ class MountainsController < ApplicationController
   end
 
   def index
-    @mountains = Mountain.order("name ASC")
+    @mountains = Mountain.order(state: :asc)
   end
 
 

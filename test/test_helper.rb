@@ -23,23 +23,15 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+  DatabaseCleaner.strategy = :transaction
 
-  def teardown
-    reset_session!
-    OmniAuth.config.mock_auth[:facebook] = nil
-  end
-end
-
-
-DatabaseCleaner.strategy = :transaction
-
-class MiniTest::Spec
   def setup
     DatabaseCleaner.start
   end
 
   def teardown
     DatabaseCleaner.clean
+    reset_session!
+    OmniAuth.config.mock_auth[:facebook] = nil
   end
-
 end

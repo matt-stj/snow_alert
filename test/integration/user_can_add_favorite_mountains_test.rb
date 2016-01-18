@@ -10,7 +10,7 @@ class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
     mountain = Mountain.create(name: "mountain", latitude: "39.523", longitude: "-104.325")
   end
 
-  test "User adds favorite resorts" do
+  test "User adds favorite mountains" do
     VCR.use_cassette('forecast_io_service#forecast') do
       visit "/"
       click_link "Login"

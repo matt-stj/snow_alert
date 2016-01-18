@@ -10,7 +10,6 @@ class UserCanBrowseAndSearchMountainsTest < ActionDispatch::IntegrationTest
 
   test "user can browse mountains by state" do
     mountain = Mountain.first
-
     visit mountains_path
 
     within(".browse") do

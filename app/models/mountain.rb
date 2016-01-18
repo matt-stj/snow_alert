@@ -8,6 +8,10 @@ class Mountain < ActiveRecord::Base
     where(state: state)
   end
 
+  def self.sort_state_codes
+    self.group(:state).count.keys.sort_by { |k| k }
+  end
+
 
   # def search(query)
   #   raw_data = Geocoder.search(query)

@@ -1,15 +1,11 @@
-<br>
-<br>
-<br>
-
 <div class="ui two column centered grid">
   <div class="column">
     <h1>Browse Mountains</h1>
 
     <div class="browse">
-      <% Mountain.group(:state).count.keys.sort_by { |k| k }.each do |state_code| %>
+      <% @mountains.sort_state_codes.each do |state_code| %>
       <h4><%= state_code %></h4>
-      <% Mountain.state(state_code).in_groups_of(4, false) do |mountain_row| %>
+      <% @mountains.state(state_code).in_groups_of(4, false) do |mountain_row| %>
       <tr>
         <% for mountain in mountain_row %>
         <td>
