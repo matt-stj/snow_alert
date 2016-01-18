@@ -23,8 +23,6 @@
 
     <% cache cache_key_for_mountain(@mountain) do %>
     <div class="ui container">
-      <!-- <div class="two column center aligned centered grid">
-        <div class="four column centered row"> -->
           <div class="ui statistics">
             <div class="small statistic">
               <div class="value">
@@ -52,10 +50,12 @@
             </div>
           </div>
         </div>
-
-        <!-- </div>
-
-      </div> -->
+        <iframe
+          width="400"
+          height="266"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/view?key=<%= ENV['google_maps_api_key'] %>&center=<%= @mountain.latitude %>,<%= @mountain.longitude%>&zoom=12" allowfullscreen>
+        </iframe>
 
       <h2>Right Now:</h2>
       <div class="small statistic">
