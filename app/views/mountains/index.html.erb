@@ -1,33 +1,35 @@
-<div class="ui two column centered grid">
-  <div class="column">
-    <h1>Browse Mountains</h1>
+<div class="top-pad">
+  <div class="ui two column centered grid">
+    <div class="column">
+      <h1>Browse Mountains</h1>
 
-    <div class="browse">
-      <% @mountains.sort_state_codes.each do |state_code| %>
-      <h4><%= state_code %></h4>
-      <% @mountains.state(state_code).in_groups_of(4, false) do |mountain_row| %>
-      <tr>
-        <% for mountain in mountain_row %>
-        <td>
-          <% if current_user %>
-            <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
-            <% if current_user.favorited?(mountain.id) %>
-            <%= link_to user_path(current_user, :favorite_action => { :remove => mountain.id }), method: :patch do %>
-              <i class="remove circle icon red"></i>--
-            <% end %>
-            <% else %>
-              <%= link_to user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch do %>
-                <i class="add circle green icon"></i>--
+      <div class="browse">
+        <% @mountains.sort_state_codes.each do |state_code| %>
+        <h4><%= state_code %></h4>
+        <% @mountains.state(state_code).in_groups_of(4, false) do |mountain_row| %>
+        <tr>
+          <% for mountain in mountain_row %>
+          <td>
+            <% if current_user %>
+              <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
+              <% if current_user.favorited?(mountain.id) %>
+              <%= link_to user_path(current_user, :favorite_action => { :remove => mountain.id }), method: :patch do %>
+                <i class="remove circle icon red"></i>--
               <% end %>
+              <% else %>
+                <%= link_to user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch do %>
+                  <i class="add circle green icon"></i>--
+                <% end %>
+              <% end %>
+            <% else %>
+              --<%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>--
             <% end %>
-          <% else %>
-            --<%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>--
+          </td>
           <% end %>
-        </td>
+        </tr>
         <% end %>
-      </tr>
-      <% end %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
