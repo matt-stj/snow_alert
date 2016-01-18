@@ -8,12 +8,12 @@ class Mountain < ActiveRecord::Base
     where(state: state)
   end
 
-  def search(query)
-    raw_data = Geocoder.search(query)
-    latitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lat")
-    longitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lng")
-    Weather.new(latitude, longitude)
-  end
+  # def search(query)
+  #   raw_data = Geocoder.search(query)
+  #   latitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lat")
+  #   longitude = raw_data.first.data.fetch("geometry").fetch("location").fetch("lng")
+  #   Weather.new(latitude, longitude)
+  # end
 
 
 end

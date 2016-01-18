@@ -18,7 +18,7 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
   test "adding additional profile info" do
     visit '/'
     click_link "Login"
-    save_and_open_page
+
     fill_in('user[email]', :with => 'hi@gmail.com')
     fill_in('user[snow_preference]', :with => '1')
     click_button('Save Changes')
