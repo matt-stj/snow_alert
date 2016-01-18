@@ -1,3 +1,5 @@
+require 'csv'
+
 resorts_path = "#{Rails.root}/lib/assets/resorts.csv"
 resort_rows = CSV.readlines(resorts_path, headers: true, header_converters: :symbol).map(&:to_h)
 
