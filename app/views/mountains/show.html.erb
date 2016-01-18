@@ -50,12 +50,15 @@
             </div>
           </div>
         </div>
+
+        <div class="ui embed">
         <iframe
           width="400"
           height="266"
           frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/view?key=<%= ENV['google_maps_api_key'] %>&center=<%= @mountain.latitude %>,<%= @mountain.longitude%>&zoom=12" allowfullscreen>
+          src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_api_key'] %>&q=<%= @mountain.name %>, <%= @mountain.state %>&zoom=12" allowfullscreen>
         </iframe>
+      </div>
 
       <h2>Right Now:</h2>
       <div class="small statistic">
