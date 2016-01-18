@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160115200405) do
+ActiveRecord::Schema.define(version: 20160118234320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,8 @@ ActiveRecord::Schema.define(version: 20160115200405) do
     t.string   "name"
     t.string   "latitude"
     t.string   "longitude"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "latest_forecast"
-    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "state"
   end
 
@@ -46,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160115200405) do
     t.string   "image_url"
     t.integer  "snow_preference"
     t.string   "email"
-    t.text     "newest_forecast"
   end
 
   add_foreign_key "favorites", "mountains"
