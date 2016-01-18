@@ -13,7 +13,20 @@
       <tr>
         <% for mountain in mountain_row %>
         <td>
-          --<%= link_to mountain.name, mountain_path(mountain) %>--
+          <% if current_user %>
+            <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
+            <% if current_user.favorited?(mountain.id) %>
+            <%= link_to user_path(current_user, :favorite_action => { :remove => mountain.id }), method: :patch do %>
+              <i class="remove circle icon red"></i>--
+            <% end %>
+            <% else %>
+              <%= link_to user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch do %>
+                <i class="add circle green icon"></i>--
+              <% end %>
+            <% end %>
+          <% else %>
+            --<%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>--
+          <% end %>
         </td>
         <% end %>
       </tr>

@@ -38,23 +38,23 @@
       <div class="column">
         <h2 class="ui icon header">
           <%= image_tag("vail-logo.png", class: "ui resort-logo icon")  %>
-          Vail Resorts
+          Vail
         </h2>
-        <a class="ui large button" href="/usage/theming.html">View Forecasts</a>
+        <%= link_to "View Forecast", mountain_path(Mountain.find_by_name("Vail")), class: "ui large button primary" %>
       </div>
       <div class="column">
         <h2 class="ui icon header">
           <%= image_tag("wp-logo.png", class: "ui resort-logo icon")  %>
-          Rocky Mountain Superpass
+          Winter Park
         </h2>
-        <div class="ui primary view-ui large button">View Forecasts</div>
+        <%= link_to "View Forecast", mountain_path(Mountain.find_by_name("Winter Park")), class: "ui large button green" %>
       </div>
       <div class="column">
         <h2 class="ui icon header">
           <%= image_tag("northstar-logo.png", class: "ui resort-logo icon")  %>
-          Lake Tahoe
+          Northstar
         </h2><br>
-        <a href="https://github.com/Semantic-Org/Semantic-UI/issues" class="ui large button">View Forecasts</a>
+        <%= link_to "View Forecast", mountain_path(Mountain.find_by_name("Northstar")), class: "ui large button primary" %>
       </div>
     </div>
   </div>

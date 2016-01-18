@@ -1,12 +1,6 @@
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<div class="ui one column stackable center aligned page grid">
+<div class="ui one column stackable center aligned page grid mtn-show">
    <div class="column twelve wide">
-
       <h1> <%= @mountain.name %>, <%= @mountain.state %> - Forecast</h1>
       <% if current_user %>
         <% if current_user.favorited?(@mountain.id) %>
@@ -19,54 +13,59 @@
            <% end %>
         <% end %>
       <% end %>
-        <br>
 
     <% cache cache_key_for_mountain(@mountain) do %>
-    <div class="ui container">
-          <div class="ui statistics">
-            <div class="small statistic">
-              <div class="value">
-                <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
+    <table class="ui table centered center aligned">
+      <div class="ui statistics">
+          <tr>
+            <td>
+              <div class="small statistic">
+                <div class="value">
+                  <i class="arrow up icon"></i> <%= @weather.todays_max.to_i%>°F
+                </div>
+                <div class="label">
+                  Today's High
+                </div>
               </div>
-              <div class="label">
-                Today's High
+            </td>
+            <td>
+              <div class="statistic">
+                <div class="value">
+                  <i class="arrow down icon"></i> <%= @weather.todays_min.to_i%>°F
+                </div>
+                <div class="label">
+                  Today's Low
+                </div>
               </div>
-            </div>
-            <div class="statistic">
-              <div class="value">
-                <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
+            </td>
+            <td>
+              <div class="statistic">
+                <div class="value downcase">
+                  <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
+                </div>
+                <div class="label">
+                  Nearest Storm
+                </div>
               </div>
-              <div class="label">
-                Today's Low
-              </div>
-            </div>
-            <div class="statistic">
-              <div class="value downcase">
-                <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
-              </div>
-              <div class="label">
-                Nearest Storm
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="ui embed">
+            </td>
+          </tr>
+          </div>
+        </table>
+
         <iframe
-          width="400"
-          height="266"
+          width="600"
+          height="300"
           frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_api_key'] %>&q=<%= @mountain.name %>, <%= @mountain.state %>&zoom=12" allowfullscreen>
+          src="https://www.google.com/maps/embed/v1/view?key=<%= ENV['google_maps_api_key'] %>&center=<%= @mountain.latitude %>,<%= @mountain.longitude %>&zoom=12" allowfullscreen>
         </iframe>
-      </div>
 
       <h2>Right Now:</h2>
       <div class="small statistic">
         <div class="value">
-          <%= @weather.current_temp%>°F
+          Currently: <%= @weather.current_temp%>°F
         </div>
         <div class="label">
-          Currently
           <p class="small-label">Feels like: <%= @weather.current_temp_feels_like %>°F</p>
         </div>
       </div>
