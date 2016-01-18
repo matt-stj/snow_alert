@@ -22,31 +22,42 @@
         <br>
 
     <% cache cache_key_for_mountain(@mountain) do %>
-      <div class="ui statistics">
-        <div class="small statistic">
-          <div class="value">
-            <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
-          </div>
-          <div class="label">
-            Today's High
+    <div class="ui container">
+          <div class="ui statistics">
+            <div class="small statistic">
+              <div class="value">
+                <i class="arrow circle outline up icon"></i> <%= @weather.todays_max.to_i%>°F
+              </div>
+              <div class="label">
+                Today's High
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value">
+                <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
+              </div>
+              <div class="label">
+                Today's Low
+              </div>
+            </div>
+            <div class="statistic">
+              <div class="value downcase">
+                <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
+              </div>
+              <div class="label">
+                Nearest Storm
+              </div>
+            </div>
           </div>
         </div>
-        <div class="statistic">
-          <div class="value">
-            <i class="arrow circle outline down icon"></i> <%= @weather.todays_min.to_i%>°F
-          </div>
-          <div class="label">
-            Today's Low
-          </div>
-        </div>
-        <div class="statistic">
-          <div class="value downcase">
-            <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
-          </div>
-          <div class="label">
-            Nearest Storm
-          </div>
-        </div>
+
+        <div class="ui embed">
+        <iframe
+          width="400"
+          height="266"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['google_maps_api_key'] %>&q=<%= @mountain.name %>, <%= @mountain.state %>&zoom=12" allowfullscreen>
+        </iframe>
       </div>
 
       <h2>Right Now:</h2>
@@ -70,7 +81,7 @@
         <p><%= @weather.week_summary%></p>
       </div>
       <br>
-      <table class="ui black table center aligned">
+      <table class="ui black table center aligned mtn-table">
         <thead>
           <tr><th>Day</th>
             <th>Snow Probabilty (%)</th>

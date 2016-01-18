@@ -42,8 +42,8 @@
             <i class="remove circle icon large red"></i>
             <% end %>
           <% else %>
-          <%= link_to "Remove Favorite", user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch %>
-            <i class="check circle icon">Add to Favorite</i>
+          <%= link_to "Add Favorite", user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch %>
+            <i class="check circle icon">Add Favorite</i>
           <% end %>
         </td>
       </tr>
