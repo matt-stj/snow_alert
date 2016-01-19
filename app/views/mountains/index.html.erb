@@ -3,7 +3,7 @@
     <div class="column">
       <h1>Browse Mountains</h1>
 
-    <% cache cache_key_for_page("mountain-index") do %>
+    <% cache cache_key_for_page("mountain-index", (current_user.id if current_user)) do %>
       <div class="browse">
         <% @mountains.sort_state_codes.each do |state_code| %>
         <h4><%= state_code %></h4>

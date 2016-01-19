@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<% cache cache_key_for_page("search") do %>
+<% cache cache_key_for_page("search", (current_user.id if current_user)) do %>
   <div class="ui grid container search-results">
     <% @mountains.each do |mountain| %>
     <div class="four wide column">
