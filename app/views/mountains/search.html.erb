@@ -14,6 +14,7 @@
   </div>
 </div>
 
+<% cache cache_key_for_page("search") do %>
   <div class="ui grid container search-results">
     <% @mountains.each do |mountain| %>
     <div class="four wide column">
@@ -34,5 +35,6 @@
     </div>
     <% end %>
   </div>
+<% end %>
 
 </div>
