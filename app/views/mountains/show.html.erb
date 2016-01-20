@@ -63,10 +63,10 @@
       <h2>Right Now:</h2>
       <div class="small statistic">
         <div class="value">
-          Currently: <%= @weather.current_temp%>°F
+          Currently: <%= @weather.current_temp.to_i %>°F
         </div>
         <div class="label">
-          <p class="small-label">Feels like: <%= @weather.current_temp_feels_like %>°F</p>
+          <p class="small-label">Feels like: <%= @weather.current_temp_feels_like.to_i %>°F</p>
         </div>
       </div>
       <%= @weather.current_summary%>
