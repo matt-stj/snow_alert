@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Powder Alert</title>
     <style>
-      body {background-color:#F9FAFB;}  
+      body {background-color:#F9FAFB;}
     </style>
     </head>
     <body>
@@ -29,8 +29,8 @@
                                 </tr>
                                 <% mountain.values.flatten(1).each do |pair| %>
                                 <tr>
-                                  <td> <%= pair.first.strftime("%a, %b %e") %> </td>
-                                  <td> <%= pair.last %> </td>
+                                  <td align="center"> <%= pair.first.strftime("%a, %b %e") %> </td>
+                                  <td align="center"> <%= pair.last.to_i %>"</td>
                                 </tr>
                                 <% end %>
                               </table>
