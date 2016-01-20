@@ -1,0 +1,37 @@
+<table class="ui table centered center aligned">
+  <div class="ui statistics">
+      <tr>
+        <td>
+          <div class="small statistic">
+            <div class="value">
+              <i class="arrow up icon"></i> <%= @weather.todays_max.to_i%>°F
+            </div>
+            <div class="label">
+              Today's High
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="statistic">
+            <div class="value">
+              <i class="arrow down icon"></i> <%= @weather.todays_min.to_i%>°F
+            </div>
+            <div class="label">
+              Today's Low
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="statistic">
+            <div class="value downcase">
+              <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
+            </div>
+            <div class="label">
+              Nearest Storm
+            </div>
+          </div>
+
+        </td>
+      </tr>
+      </div>
+    </table>

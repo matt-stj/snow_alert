@@ -1,0 +1,26 @@
+<div class="ui basic modal">
+<i class="close icon"></i>
+<div class="header">
+  Add your favorite mountains
+</div>
+<div class="image content">
+  <div class="image">
+    <i class="tree icon"></i>
+  </div>
+  <div class="description">
+    <p>It looks like you haven't added your favorite mountains yet, would you like to begin by adding a few?</p>
+  </div>
+</div>
+<div class="actions">
+  <div class="two fluid ui inverted buttons">
+    <div class="ui red basic inverted button" id="undim">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <%= link_to search_path, class: "ui green basic inverted button" do %>
+      <i class="checkmark icon"></i>
+      Yes
+    <% end %>
+  </div>
+</div>
+</div>

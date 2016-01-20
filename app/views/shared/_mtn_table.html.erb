@@ -1,0 +1,33 @@
+<table class="ui black table center aligned mtn-table">
+  <thead>
+    <tr><th>Day</th>
+      <th>Snow Probabilty (%)</th>
+      <th>Accumulation (in)</th>
+      <th>High (°F)</th>
+      <th>Low (°F)</th>
+      <th>Summary</th>
+    </tr></thead><tbody>
+      <% @weather.daily.fetch(:data).each_with_index do |day, index| %>
+      <tr>
+        <td><p><%= (Time.now + index.day).strftime("%a, %b %e")%></p></td>
+        <td><%= (day.fetch(:precipProbability).to_f * 100).to_i%></td>
+        <td>
+          <% if day.keys.include?(:precipAccumulation) %>
+          <% if day.fetch(:precipAccumulation).to_i > 5 %>
+          <div class="numberCircle">
+            <p class="bold"><%= day.fetch(:precipAccumulation).to_i  %>"</p>
+          </div>
+          <% else %>
+          <%= day.fetch(:precipAccumulation).to_i %>"
+          <% end %>
+          <% else %>
+          0"
+          <% end %>
+        </td>
+        <td><%= day.fetch(:temperatureMax).to_i%></td>
+        <td><%= day.fetch(:temperatureMin).to_i%></td>
+        <td><%= day.fetch(:summary)%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

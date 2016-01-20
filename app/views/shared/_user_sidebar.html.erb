@@ -1,0 +1,24 @@
+<div class="four wide column">
+  <div class="ui secondary vertical pointing fluid menu">
+    <a class="item blue" href="/mountains">
+      <h5 class="ui header blue">All Mountains</h5>
+    </a>
+    <div class="item">
+      <b><%= link_to "Preferences", edit_user_path(current_user) %></b>
+      <div class="menu">
+      </div>
+      <p class="item">Snowfall preference: <%= current_user.snow_preference %>"</p>
+      <p class="item">Email: <%= current_user.email %></p>
+      </div>
+      <div class="center centered aligned">
+        <a href="/search">
+          <div class="ui animated blue button" tabindex="0">
+            <div class="visible content">Search Mountains</div>
+            <div class="hidden content">
+              <i class="right arrow icon"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+  </div>
+</div>
