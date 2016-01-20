@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    if @user.favorites.count == 0
+      @dialogue = true
+    end
   end
 
   def edit

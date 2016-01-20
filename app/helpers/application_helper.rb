@@ -6,15 +6,12 @@ module ApplicationHelper
     [mountain_name, "data", time_stamp].join("-")
   end
 
-  def cache_key_for_page(page_name, user_id)
-    if user_id.nil?
-      last_updated = "unregistered-user"
-    else
-      last_updated = User.find(user_id).favorites.maximum(:updated_at).to_s.parameterize
-    end
-    time_stamp = Time.now.strftime("%Y-%m")
-    name = page_name.parameterize
-    [page_name, last_updated, user_id, time_stamp].join("-")
+  def cache_key_for(model_class, label = "")
+    prefix       = model_class.to_s.downcase.pluralize
+    max_updated  = model_class.maximum(:updated_at)
+    count        = model_class.count
+
+    [prefix, label, max_updated, count].join("-")
   end
 
 end
