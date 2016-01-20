@@ -1,31 +1,5 @@
 <% if @dialogue %>
-  <div class="ui basic modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Add your favorite mountains
-  </div>
-  <div class="image content">
-    <div class="image">
-      <i class="tree icon"></i>
-    </div>
-    <div class="description">
-      <p>It looks like you haven't added your favorite mountains yet, would you like to begin by adding a few?</p>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="two fluid ui inverted buttons">
-      <div class="ui red basic inverted button" id="undim">
-        <i class="remove icon"></i>
-        No
-      </div>
-      <%= link_to search_path, class: "ui green basic inverted button" do %>
-        <i class="checkmark icon"></i>
-        Yes
-      <% end %>
-    </div>
-  </div>
-  </div>
-
+  <%= render 'shared/modal' %>
 <% end %>
 
 <div class="ui container top-pad">
@@ -33,59 +7,9 @@
   <h1>My Mountain Dashboard</h1>
 
   <div class="ui divider"></div>
-    <br>
-    <div class="ui grid">
-      <div class="four wide column">
-        <div class="ui secondary vertical pointing fluid menu">
-          <a class="item blue" href="/mountains">
-            <h5 class="ui header blue">All Mountains</h5>
-          </a>
-          <div class="item">
-            <b><%= link_to "Preferences", edit_user_path(current_user) %></b>
-            <div class="menu">
-            </div>
-            <p class="item">Snowfall preference: <%= current_user.snow_preference %>"</p>
-            <p class="item">Email: <%= current_user.email %></p>
-            </div>
-            <div class="center centered aligned">
-              <a href="/search">
-                <div class="ui animated blue button" tabindex="0">
-                  <div class="visible content">Search Mountains</div>
-                  <div class="hidden content">
-                    <i class="right arrow icon"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-        </div>
-      </div>
-      <div class="twelve wide column">
-        <table class="ui celled table centered center aligned">
-    <thead>
-      <tr>
-        <th>Location</th>
-        <th style="width: 200px;">Remove from favorites</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% current_user.favorites.each do |favorite| %>
-      <tr>
-        <td><%= link_to favorite.mountain.name, mountain_path(favorite.mountain) %></td>
-        <td>
-          <% if current_user.favorited?(favorite.mountain.id) %>
-             <%= link_to user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch do %>
-            <i class="remove circle icon large red"></i>
-            <% end %>
-          <% else %>
-          <%= link_to "Add Favorite", user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch %>
-            <i class="check circle icon">Add Favorite</i>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-      </div>
-
-    </div>
+  <br>
+  <div class="ui grid">
+    <%= render '/shared/user_sidebar' %>
+    <%= render '/shared/user_table' %>
   </div>
+</div>

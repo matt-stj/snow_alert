@@ -1,117 +1,20 @@
 
-<div class="ui one column stackable center aligned page grid mtn-show">
-   <div class="column twelve wide">
-      <h1> <%= @mountain.name %>, <%= @mountain.state %> - Forecast</h1>
-      <% if current_user %>
-        <% if current_user.favorited?(@mountain.id) %>
-           <%= link_to user_path(current_user, :favorite_action => { :remove => @mountain.id }), method: :patch do %>
-           <i class="remove circle icon large red"></i><span class="remove">Remove from Favorites</span>
-           <% end %>
-        <% else %>
-           <%= link_to user_path(current_user, :favorite_action => { :add => @mountain.id }), method: :patch do %>
-           <i class="add circle icon large green"></i><span class="add">Add to Favorites</span>
-           <% end %>
-        <% end %>
-      <% end %>
+<br><%= render '/shared/mtn_header' %>
 
-    <% cache cache_key_for_mountain(@mountain) do %>
-    <table class="ui table centered center aligned">
-      <div class="ui statistics">
-          <tr>
-            <td>
-              <div class="small statistic">
-                <div class="value">
-                  <i class="arrow up icon"></i> <%= @weather.todays_max.to_i%>°F
-                </div>
-                <div class="label">
-                  Today's High
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="statistic">
-                <div class="value">
-                  <i class="arrow down icon"></i> <%= @weather.todays_min.to_i%>°F
-                </div>
-                <div class="label">
-                  Today's Low
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="statistic">
-                <div class="value downcase">
-                  <i class="cloud icon"></i> <%= @weather.nearest_storm %>mi
-                </div>
-                <div class="label">
-                  Nearest Storm
-                </div>
-              </div>
+<% cache cache_key_for_mountain(@mountain) do %>
 
-            </td>
-          </tr>
-          </div>
-        </table>
+<%= render '/shared/mtn_stats' %>
 
-        <iframe
-          width="600"
-          height="300"
-          frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/view?key=<%= ENV['google_maps_api_key'] %>&center=<%= @mountain.latitude %>,<%= @mountain.longitude %>&zoom=12" allowfullscreen>
-        </iframe>
+  <iframe
+    width="600"
+    height="300"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/view?key=<%= ENV['google_maps_api_key'] %>&center=<%= @mountain.latitude %>,<%= @mountain.longitude %>&zoom=12" allowfullscreen>
+  </iframe>
 
-      <h2>Right Now:</h2>
-      <div class="small statistic">
-        <div class="value">
-          Currently: <%= @weather.current_temp.to_i %>°F
-        </div>
-        <div class="label">
-          <p class="small-label">Feels like: <%= @weather.current_temp_feels_like.to_i %>°F</p>
-        </div>
-      </div>
-      <%= @weather.current_summary%>
-      <p>Current Chance of Snow: <%= @weather.current_precip_prob %>% with <%= @weather.current_precip_intensity%>"</p>
+<%= render '/shared/mtn_vert_section' %><br>
 
-      <h2>Next Hour:</h2>
-        <p><%= @weather.next_hour_summary%></p>
-      <h2>Next 24 Hours:</h2>
-        <p><%= @weather.next_24_hour_summary%></p>
-      <h2>Next 7 Days: </h2>
-        <p><%= @weather.week_summary%></p>
-      </div>
-      <br>
-      <table class="ui black table center aligned mtn-table">
-        <thead>
-          <tr><th>Day</th>
-            <th>Snow Probabilty (%)</th>
-            <th>Accumulation (in)</th>
-            <th>High (°F)</th>
-            <th>Low (°F)</th>
-            <th>Summary</th>
-          </tr></thead><tbody>
-            <% @weather.daily.fetch(:data).each_with_index do |day, index| %>
-            <tr>
-              <td><p><%= (Time.now + index.day).strftime("%a, %b %e")%></p></td>
-              <td><%= (day.fetch(:precipProbability).to_f * 100).to_i%></td>
-              <td>
-                <% if day.keys.include?(:precipAccumulation) %>
-                  <% if day.fetch(:precipAccumulation).to_i > 5 %>
-                    <div class="numberCircle">
-                      <p class="bold"><%= day.fetch(:precipAccumulation).to_i  %>"</p>
-                    </div>
-                  <% else %>
-                    <%= day.fetch(:precipAccumulation).to_i %>"
-                  <% end %>
-                <% else %>
-                  0"
-                <% end %>
-              </td>
-              <td><%= day.fetch(:temperatureMax).to_i%></td>
-              <td><%= day.fetch(:temperatureMin).to_i%></td>
-              <td><%= day.fetch(:summary)%></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <% end %>
-    </div>
+<%= render '/shared/mtn_table' %>
+
+  <% end %>
+</div>
