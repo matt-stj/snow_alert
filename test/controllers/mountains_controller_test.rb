@@ -14,9 +14,4 @@ class MountainsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:mountains)
   end
 
-  test "truncate coordiantes works as expected" do
-    skip
-    coordinate = "39.5679"
-    assert_equal "39.5679", truncate_coordinate(coordinate)
-  end
 end
