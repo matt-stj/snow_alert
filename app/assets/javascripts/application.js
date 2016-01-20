@@ -15,9 +15,14 @@
 //= require semantic-ui
 //= require_tree .
 
+
+
 $( document ).ready(function() {
   searchMountains();
 
+  $( "#undim" ).click(function() {
+    $('.ui.modal').modal('hideDimmer')
+  });
 
   $("#search").on("keypress", function (e) {
     if (e.keyCode == 13) {
@@ -74,6 +79,9 @@ $( document ).ready(function() {
   })
 ;
 
+$('.ui.modal')
+.modal('show')
+;
 
 });
 
@@ -84,10 +92,10 @@ function searchMountains() {
     var mountains = $(".search-results").children()
     $.each(mountains, function(){
       if ($(this).text().search(new RegExp(filter, "i")) === -1) {
-        $(this).addClass("hidden")
+        $(this).addClass("invisible")
       }
       else {
-        $(this).removeClass("hidden")
+        $(this).removeClass("invisible")
       }
     })
 

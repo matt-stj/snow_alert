@@ -1,3 +1,34 @@
+<% if @dialogue %>
+  <div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Add your favorite mountains
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="tree icon"></i>
+    </div>
+    <div class="description">
+      <p>It looks like you haven't added your favorite mountains yet, would you like to begin by adding a few?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="two fluid ui inverted buttons">
+      <div class="ui red basic inverted button" id="undim">
+        <i class="remove icon"></i>
+        No
+      </div>
+      <%= link_to search_path, class: "ui green basic inverted button" do %>
+        <i class="checkmark icon"></i>
+        Yes
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+<% end %>
+
+
 <div class="ui container top-pad">
 
   <h1>My Mountain Dashboard</h1>
@@ -7,8 +38,8 @@
     <div class="ui grid">
       <div class="four wide column">
         <div class="ui secondary vertical pointing fluid menu">
-          <a class="item">
-            <h4 class="ui header active">Resorts</h4>
+          <a class="item blue" href="/mountains">
+            <h5 class="ui header blue">All Mountains</h5>
           </a>
           <div class="item">
             <b><%= link_to "Preferences", edit_user_path(current_user) %></b>
@@ -16,6 +47,16 @@
             </div>
             <p class="item">Snowfall preference: <%= current_user.snow_preference %>"</p>
             <p class="item">Email: <%= current_user.email %></p>
+            </div>
+            <div class="center centered aligned">
+              <a href="/search">
+                <div class="ui animated blue button" tabindex="0">
+                  <div class="visible content">Search Mountains</div>
+                  <div class="hidden content">
+                    <i class="right arrow icon"></i>
+                  </div>
+                </div>
+              </a>
             </div>
         </div>
       </div>
@@ -46,5 +87,6 @@
     </tbody>
   </table>
       </div>
+
     </div>
   </div>

@@ -178,12 +178,16 @@ h1 {
   color: green !important;
 }
 
-.hidden {
+.invisible {
   display: none !important;
 }
 
 .search-header {
   margin-bottom: 40px;
+}
+
+.search {
+  margin-bottom: 20px;
 }
 
 .mtn-table {

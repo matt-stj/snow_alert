@@ -3,7 +3,7 @@
     <div class="column">
       <h1>Browse Mountains</h1>
 
-    <% cache cache_key_for_page("mountain-index", (current_user.id if current_user)) do %>
+    <% cache cache_key_for(Mountain, "browse") do %>
       <div class="browse">
         <% @mountains.sort_state_codes.each do |state_code| %>
         <h4><%= state_code %></h4>
@@ -11,25 +11,12 @@
         <tr>
           <% for mountain in mountain_row %>
           <td>
-            <% if current_user %>
-              <%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>
-              <% if current_user.favorited?(mountain.id) %>
-              <%= link_to user_path(current_user, :favorite_action => { :remove => mountain.id }), method: :patch do %>
-                <i class="remove circle icon red"></i>--
-              <% end %>
-              <% else %>
-                <%= link_to user_path(current_user, :favorite_action => { :add => mountain.id }), method: :patch do %>
-                  <i class="add circle green icon"></i>--
-                <% end %>
-              <% end %>
-            <% else %>
               --<%= link_to "#{mountain.name}, (#{mountain.state}) ", mountain_path(mountain), class: "item" %>--
-            <% end %>
           </td>
           <% end %>
         </tr>
         <% end %>
-        <% end %>
+      <% end %>
       </div>
     <% end %>
     </div>
