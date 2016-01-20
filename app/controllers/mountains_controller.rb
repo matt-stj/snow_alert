@@ -2,11 +2,7 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find(params[:id])
-    if stale?(last_modified: @mountain.updated_at, etag: @mountain.cache_key)
-      @weather = Weather.new(@mountain.latitude, @mountain.longitude)
-    else
-      #nothing
-    end
+    @weather = Weather.new(@mountain.latitude, @mountain.longitude) if stale?(last_modified: @mountain.updated_at, etag: @mountain.cache_key)
   end
 
   def search
