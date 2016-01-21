@@ -1,19 +1,22 @@
-<h2>Right Now:</h2>
-<div class="small statistic">
-  <div class="value">
-    Currently: <%= @weather.current_temp.to_i %>°F
-  </div>
-  <div class="label">
-    <p class="small-label">Feels like: <%= @weather.current_temp_feels_like.to_i %>°F</p>
-  </div>
-</div>
-<%= @weather.current_summary%>
-<p>Current Chance of Snow: <%= @weather.current_precip_prob %>% with <%= @weather.current_precip_intensity%>"</p>
+<div class="vert-section">
 
-<h2>Next Hour:</h2>
-  <p><%= @weather.next_hour_summary%></p>
-<h2>Next 24 Hours:</h2>
-  <p><%= @weather.next_24_hour_summary%></p>
-<h2>Next 7 Days: </h2>
-  <p><%= @weather.week_summary%></p>
+  <h2>Right Now:</h2>
+  <div class="small statistic">
+    <div class="value">
+      Currently: <%= @weather.current_temp.to_i %>°F
+    </div>
+    <div class="label">
+      <p class="small-label">Feels like: <%= @weather.current_temp_feels_like.to_i %>°F</p>
+    </div>
+  </div>
+  <%= @weather.current_summary%>
+  <p>Current Chance of Snow: <%= @weather.current_precip_prob %>% with <%= @weather.current_precip_intensity%>"</p>
+
+  <h2>Next Hour:</h2>
+    <p><%= @weather.next_hour_summary%></p>
+  <h2>Next 24 Hours:</h2>
+    <p><%= @weather.next_24_hour_summary%></p>
+  <h2>Next 7 Days: </h2>
+    <p><%= @weather.week_summary%></p>
+  </div>
 </div>

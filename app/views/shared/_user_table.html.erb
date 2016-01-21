@@ -12,7 +12,7 @@
   <td><%= link_to favorite.mountain.name, mountain_path(favorite.mountain) %></td>
   <td>
     <% if current_user.favorited?(favorite.mountain.id) %>
-       <%= link_to user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch do %>
+       <%= link_to user_path(current_user, :favorite_action => { :remove => favorite.mountain.id }), method: :patch, class: "remove" do %>
       <i class="remove circle icon large red"></i>
       <% end %>
     <% else %>

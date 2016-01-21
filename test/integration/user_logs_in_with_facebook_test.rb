@@ -48,17 +48,4 @@ class UserLogsInWithFacebookTest < ActionDispatch::IntegrationTest
     click_link("Log out")
   end
 
-  def stub_omniauth
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({"provider"=>"facebook",
-      "uid"=>"12345",
-      "info"=>{"name"=>"Matt Test", "image"=>"http://graph.facebook.com/12345/picture"},
-      "credentials"=>
-      {"token"=>
-        "test_token",
-        "expires_at"=>1457915664,
-        "expires"=>true},
-        "extra"=>{"raw_info"=>{"name"=>"Matt Test", "id"=>"12345"}}})
-  end
-
 end

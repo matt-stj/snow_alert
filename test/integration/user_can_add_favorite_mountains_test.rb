@@ -10,8 +10,8 @@ class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
     mountain = Mountain.create(name: "mountain", latitude: "39.523", longitude: "-104.325")
   end
 
-  test "User adds favorite mountains" do
-    VCR.use_cassette('forecast_io_service#forecast') do
+  test "User adds and removes a favorite mountain from show page" do
+    VCR.use_cassette('forecast_io_service#forecast2') do
       visit "/"
       click_link "Login"
       assert_equal edit_user_path(User.last), current_path
@@ -23,20 +23,13 @@ class UserCanAddFavoriteMountainsTest < ActionDispatch::IntegrationTest
       click_link("Add to Favorites")
 
       assert_equal 1, User.last.favorites.count
-    end
-  end
 
-  def stub_omniauth
-    OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({"provider"=>"facebook",
-      "uid"=>"12345",
-      "info"=>{"name"=>"Matt Test", "image"=>"http://graph.facebook.com/12345/picture"},
-      "credentials"=>
-      {"token"=>
-        "test_token",
-        "expires_at"=>1457915664,
-        "expires"=>true},
-        "extra"=>{"raw_info"=>{"name"=>"Matt Test", "id"=>"12345"}}})
+      visit mountains_path
+      click_link("mountain")
+      click_link("Remove from Favorites")
+
+      assert_equal 0, User.last.favorites.count
+    end
   end
 
 end
