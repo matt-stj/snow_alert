@@ -28,36 +28,4 @@ class UserCanBrowseAndSearchMountainsTest < ActionDispatch::IntegrationTest
     end
   end
 
-
-  test "user can search mountains" do
-    skip
-    mountain = Mountain.first
-
-    visit search_path
-
-    within(".search-results") do
-      assert page.has_content?("CO")
-      assert page.has_content?("Mountain - 0")
-      assert page.has_content?("CA")
-      assert page.has_content?("Mountain - 1")
-      assert page.has_content?("WY")
-      assert page.has_content?("Mountain - 2")
-      refute page.has_css?("hidden")
-    end
-
-    fill_in('search', :with => 'CO')
-
-
-    within(".search-results") do
-      assert page.has_content?("CO")
-      assert page.has_content?("Mountain - 0")
-      assert find_link("Mountain - 0").visible?
-      #  refute find_link("Mountain - 1").visible?
-    end
-
-    click_link("Mountain - 0")
-
-    assert_equal mountain_path(mountain), current_path
-  end
-
 end
