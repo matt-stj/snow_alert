@@ -8,6 +8,8 @@ Application that sends email snow alerts for a users’ favorite ski resorts.
 
 [https://snow-a1ert.herokuapp.com/](https://snow-a1ert.herokuapp.com/)
 
+![Screenshot](http://i65.tinypic.com/2wgtd2f.png)
+
 ## Features
 
 - Facebook OAuth
