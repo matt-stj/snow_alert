@@ -13,7 +13,7 @@ Application that sends email snow alerts for a users’ favorite ski resorts.
 ## Features
 
 - Facebook OAuth
-- Handrolled service for [Forcast.io's](forcast.io) weather API
+- Handrolled service for [Forcast.io's](www.forcast.io) weather API
 - Rakefile for populating database with North American Ski resort info
 - Rake task for sending automated daily alert emails to users
 
