@@ -1,7 +1,5 @@
 # Snow Alert
 
----
-
 ## Description
 
 Application that sends email snow alerts for a users’ favorite ski resorts.
