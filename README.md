@@ -19,6 +19,11 @@ Application that sends email snow alerts for a users’ favorite ski resorts.
 
 ## Running locally
 
+#### Clone Repo
 `bundle`
 
 `rake db:create db:migrate data:import`
+
+#### To run tests  
+
+`rake test`
