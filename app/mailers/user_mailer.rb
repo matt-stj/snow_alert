@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
   def alert(user)
     @user = user
     @forecast = Alert.new(@user).alert_data
-    mail(to: @user.email, subject: "Snow is on the way!")
+    mail(to: @user.email, subject: "Snow is on the way!") if @forecast.to_send?
   end
 
 end

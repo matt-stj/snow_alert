@@ -21,7 +21,11 @@ class Alert
   end
 
   def to_send?
-    return true if alert_data != []
+    if alert_data != []
+      true
+    else
+      false
+    end
   end
 
 end
